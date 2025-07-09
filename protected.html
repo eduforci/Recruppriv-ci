@@ -1,0 +1,70 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Accès sécurisé - RecruPPrivé.CI</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #eef4fa;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .login-box {
+      background: #fff;
+      padding: 2em;
+      border-radius: 10px;
+      text-align: center;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    }
+
+    input {
+      margin-top: 1em;
+      padding: 0.7em;
+      width: 100%;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    button {
+      margin-top: 1.5em;
+      padding: 0.7em 1.5em;
+      background-color: #005baa;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #004080;
+    }
+  </style>
+</head>
+<body>
+  <div class="login-box">
+    <h2>Accès au formulaire réservé</h2>
+    <input type="password" id="password" placeholder="Mot de passe"/>
+    <button onclick="checkPassword()">Entrer</button>
+    <p id="error" style="color:red; display:none;">Mot de passe incorrect</p>
+  </div>
+
+  <script>
+    function checkPassword() {
+      const pwd = document.getElementById("password").value;
+      if (pwd === "recru2025") {
+        sessionStorage.setItem("authorized", "true");
+        window.location.href = "formulaire-fondateur.html";
+      } else {
+        document.getElementById("error").style.display = "block";
+      }
+    }
+  </script>
+</body>
+</html>
