@@ -1,162 +1,376 @@
-<!DOCTYPE html><html lang="fr">
+<!DOCTYPE html>
+<html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>RecruPPrivé.CI</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RecruPPrivé.CI - Recrutement d'enseignants du privé</title>
   <style>
-    body {
-      font-family: Arial, sans-serif;
+    * {
       margin: 0;
       padding: 0;
-      background-color: #f9f9f9;
-      color: #333;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
     }
+
+    body {
+      background: #f4fdf6;
+      color: #222;
+      line-height: 1.6;
+    }
+
     header {
-      background-color: #005baa;
+      background: linear-gradient(rgba(0, 100, 0, 0.75), rgba(0, 100, 0, 0.75)),
+        url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1400&q=80') center/cover no-repeat;
       color: white;
-      padding: 1em;
+      text-align: center;
+      padding: 80px 20px;
+    }
+
+    header h1 {
+      font-size: 2.3rem;
+      margin-bottom: 15px;
+    }
+
+    header p {
+      max-width: 700px;
+      margin: 0 auto 25px;
+      font-size: 1.1rem;
+    }
+
+    .hero-buttons {
       display: flex;
-      justify-content: space-between;
-      align-items: center;
+      justify-content: center;
+      gap: 15px;
+      flex-wrap: wrap;
     }
-    header img {
-      height: 50px;
+
+    .btn {
+      display: inline-block;
+      padding: 14px 24px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: 0.3s;
     }
+
+    .btn-primary {
+      background: #00b050;
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background: #008a3d;
+    }
+
+    .btn-secondary {
+      background: white;
+      color: #006400;
+      border: 2px solid white;
+    }
+
+    .btn-secondary:hover {
+      background: #e6ffe6;
+    }
+
     nav {
-      display: flex;
-      gap: 1em;
+      background: #006400;
+      padding: 12px;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
     }
+
     nav a {
       color: white;
       text-decoration: none;
+      margin: 0 12px;
+      font-weight: bold;
+      font-size: 0.95rem;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    section {
+      padding: 50px 20px;
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    .section-title {
+      text-align: center;
+      color: #006400;
+      margin-bottom: 30px;
+      font-size: 2rem;
+    }
+
+    .services {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 12px;
+      padding: 25px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+      text-align: center;
+    }
+
+    .card h3 {
+      color: #006400;
+      margin-bottom: 12px;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+      text-align: center;
+    }
+
+    .stat-box {
+      background: #006400;
+      color: white;
+      padding: 30px 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+    }
+
+    .stat-box h3 {
+      font-size: 2rem;
+      margin-bottom: 8px;
+    }
+
+    .form-container {
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      max-width: 700px;
+      margin: auto;
+    }
+
+    form input,
+    form select,
+    form textarea {
+      width: 100%;
+      padding: 14px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 1rem;
+    }
+
+    form textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+
+    form button {
+      width: 100%;
+      background: #00b050;
+      color: white;
+      border: none;
+      padding: 15px;
+      font-size: 1rem;
+      border-radius: 8px;
+      cursor: pointer;
       font-weight: bold;
     }
-    .container {
-      padding: 2em;
+
+    form button:hover {
+      background: #008a3d;
     }
-    form {
-      background-color: white;
-      padding: 1.5em;
-      margin-bottom: 2em;
-      border-radius: 8px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 15px;
     }
-    label {
-      display: block;
-      margin-top: 1em;
-    }
-    input, select, textarea {
+
+    .gallery img {
       width: 100%;
-      padding: 0.5em;
-      margin-top: 0.5em;
+      height: 220px;
+      object-fit: cover;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
     }
-    .section-title {
-      margin-top: 2em;
-      font-size: 1.5em;
-      color: #005baa;
-    }
-    footer {
-      background-color: #005baa;
-      color: white;
-      padding: 1em;
+
+    .contact-box {
+      background: white;
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
       text-align: center;
-      margin-top: 3em;
+      max-width: 700px;
+      margin: auto;
     }
+
+    .contact-box p {
+      margin-bottom: 10px;
+      font-size: 1.05rem;
+    }
+
+    footer {
+      background: #004d00;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      margin-top: 30px;
+    }
+
     @media (max-width: 768px) {
-      nav {
-        flex-direction: column;
+      header {
+        padding: 60px 15px;
+      }
+
+      header h1 {
+        font-size: 1.8rem;
+      }
+
+      header p {
+        font-size: 1rem;
+      }
+
+      nav a {
+        display: inline-block;
+        margin: 6px 8px;
+        font-size: 0.9rem;
+      }
+
+      .section-title {
+        font-size: 1.6rem;
       }
     }
   </style>
 </head>
-<body><header>
-  <img src="logo.png" alt="Logo RecruPPrivé">
+<body>
+
+  <!-- MENU -->
   <nav>
-    <a href="#accueil">Accueil</a>
-    <a href="#form-fondateur">Fondateur</a>
-    <a href="#form-enseignant">Enseignant</a>
-    <a href="#pourquoi-payer">Pourquoi payer ?</a>
+    <a href="#services">Nos services</a>
+    <a href="#stats">Statistiques</a>
+    <a href="#inscription">Inscription</a>
+    <a href="#galerie">Galerie photos</a>
+    <a href="#contact">Contact</a>
   </nav>
-</header><div class="container">
-  <section id="accueil">
-    <h1>Bienvenue sur RecruPPrivé.CI</h1>
-<p>Le premier site de mise en relation entre fondateurs d’écoles privées et enseignants qualifiés en Côte d'Ivoire.</p>
+
+  <!-- BANNIÈRE D'ACCUEIL -->
+  <header>
+    <h1>RecruPPrivé.CI</h1>
+    <p>
+      La plateforme ivoirienne dédiée au recrutement d’enseignants du privé.
+      Fondateurs d’écoles, trouvez rapidement des enseignants qualifiés.
+      Enseignants, postulez facilement aux offres disponibles.
+    </p>
+
+    <div class="hero-buttons">
+      <a href="#inscription" class="btn btn-primary">Demande de professeur</a>
+      <a href="#inscription" class="btn btn-secondary">Poser ma candidature</a>
+    </div>
+  </header>
+
+  <!-- NOS SERVICES -->
+  <section id="services">
+    <h2 class="section-title">Nos services</h2>
+    <div class="services">
+      <div class="card">
+        <h3>Recrutement rapide</h3>
+        <p>Les établissements privés peuvent demander des enseignants selon leurs besoins.</p>
+      </div>
+
+      <div class="card">
+        <h3>Candidatures d’enseignants</h3>
+        <p>Les enseignants déposent leur profil pour être visibles par les fondateurs d’écoles.</p>
+      </div>
+
+      <div class="card">
+        <h3>Mise en relation fiable</h3>
+        <p>Nous facilitons une mise en relation sérieuse entre écoles privées et enseignants.</p>
+      </div>
+
+      <div class="card">
+        <h3>Couverture nationale</h3>
+        <p>Service accessible partout en Côte d’Ivoire pour le primaire, le secondaire et plus.</p>
+      </div>
+    </div>
   </section>
 
-  <section id="form-fondateur">
-    <h2 class="section-title">Demande de service (Fondateur d’école)</h2>
-    <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
-      <label for="nom-fondateur">Nom complet</label>
-      <input type="text" id="nom-fondateur" name="Nom du fondateur" required>
+  <!-- STATISTIQUES -->
+  <section id="stats">
+    <h2 class="section-title">Quelques chiffres</h2>
+    <div class="stats">
+      <div class="stat-box">
+        <h3 id="teachers-count">150+</h3>
+        <p>Enseignants inscrits</p>
+      </div>
 
-      <label for="ecole">Nom de l’école</label>
-      <input type="text" id="ecole" name="Nom de l’école" required>
+      <div class="stat-box">
+        <h3 id="parents-count">80+</h3>
+        <p>Parents / Écoles satisfaits</p>
+      </div>
 
-      <label for="ville">Ville</label>
-      <input type="text" id="ville" name="Ville" required>
-
-      <label for="quartier">Quartier</label>
-      <input type="text" id="quartier" name="Quartier" required>
-
-      <label for="niveau">Niveau ou classe recherchée</label>
-      <input type="text" id="niveau" name="Niveau" required>
-
-      <label for="matiere">Matière(s)</label>
-      <input type="text" id="matiere" name="Matière" required>
-
-      <label for="telephone">Numéro de téléphone</label>
-      <input type="tel" id="telephone" name="Téléphone" required>
-
-      <button type="submit">Envoyer la demande</button>
-    </form>
+      <div class="stat-box">
+        <h3 id="jobs-count">35+</h3>
+        <p>Postes disponibles</p>
+      </div>
+    </div>
   </section>
 
-  <section id="form-enseignant">
-    <h2 class="section-title">Candidature (Enseignant)</h2>
-    <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
-      <label for="nom-enseignant">Nom complet</label>
-      <input type="text" id="nom-enseignant" name="Nom de l’enseignant" required>
+  <!-- FORMULAIRE -->
+  <section id="inscription">
+    <h2 class="section-title">Inscription / Demande</h2>
+    <div class="form-container">
+      <form>
+        <input type="text" placeholder="Nom complet" required />
+        <input type="tel" placeholder="Numéro WhatsApp / Téléphone" required />
+        
+        <select required>
+          <option value="">Je suis...</option>
+          <option>Fondateur / Responsable d'école</option>
+          <option>Enseignant(e)</option>
+        </select>
 
-      <label for="ville-enseignant">Ville</label>
-      <input type="text" id="ville-enseignant" name="Ville" required>
+        <input type="text" placeholder="Ville / Commune" required />
+        <input type="text" placeholder="Matière ou profil recherché (ou enseigné)" required />
+        
+        <textarea placeholder="Décrivez votre besoin ou votre profil..."></textarea>
 
-      <label for="quartier-enseignant">Quartier</label>
-      <input type="text" id="quartier-enseignant" name="Quartier" required>
-
-      <label for="niveau-enseigne">Niveau ou classe souhaitée</label>
-      <input type="text" id="niveau-enseigne" name="Niveau souhaité" required>
-
-      <label for="matiere-enseignee">Matière(s)</label>
-      <input type="text" id="matiere-enseignee" name="Matière" required>
-
-      <label for="telephone-enseignant">Numéro de téléphone</label>
-      <input type="tel" id="telephone-enseignant" name="Téléphone" required>
-
-      <label for="paiement">Avez-vous payé les frais de dossier ?</label>
-      <select id="paiement" name="Paiement">
-        <option value="oui">Oui</option>
-        <option value="non">Non</option>
-      </select>
-
-      <button type="submit">Soumettre la candidature</button>
-    </form>
+        <button type="submit">Envoyer ma demande</button>
+      </form>
+    </div>
   </section>
 
-  <section id="pourquoi-payer">
-    <h2 class="section-title">Pourquoi payer ?</h2>
-    <p>Les frais demandés permettent de :</p>
-    <ul>
-      <li>Traiter rapidement votre demande</li>
-      <li>Assurer un service sérieux et sécurisé</li>
-      <li>Mettre en relation uniquement avec des profils vérifiés</li>
-      <li>Suivre votre dossier jusqu’au placement effectif</li>
-    </ul>
-    <p><strong>Numéro Mobile Money (MoMo) : 07 59 12 82 28</strong></p>
+  <!-- GALERIE -->
+  <section id="galerie">
+    <h2 class="section-title">Galerie photos</h2>
+    <div class="gallery">
+      <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=800&q=80" alt="Salle de classe">
+      <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=800&q=80" alt="Élèves en classe">
+      <img src="https://images.unsplash.com/photo-1513258496099-48168024aec0?auto=format&fit=crop&w=800&q=80" alt="Professeur enseignant">
+      <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=800&q=80" alt="École privée">
+    </div>
   </section>
-</div>
 
-<footer>
-  &copy; 2025 RecruPPrivé.CI - Tous droits réservés
-</footer>
+  <!-- CONTACT -->
+  <section id="contact">
+    <h2 class="section-title">Contact</h2>
+    <div class="contact-box">
+      <p><strong>📞 Mobile Money :</strong> 07 59 12 82 28</p>
+      <p><strong>📍 Zone :</strong> Côte d’Ivoire</p>
+      <p><strong>📧 E-mail professionnel :</strong> À ajouter bientôt</p>
+      <p><strong>💬 WhatsApp :</strong> Disponible pour les demandes et candidatures</p>
+    </div>
+  </section>
+
+  <!-- PIED DE PAGE -->
+  <footer>
+    <p>© 2026 RecruPPrivé.CI - Tous droits réservés</p>
+  </footer>
+
 </body>
-</html>
+  </html>
