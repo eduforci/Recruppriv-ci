@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Demande de professeur - RecruPPrivé.CI</title>
+  <meta name="description" content="Formulaire de demande de professeur pour les établissements privés en Côte d'Ivoire." />
   <style>
     :root {
       --green-dark: #0b6b3d;
@@ -16,6 +17,7 @@
       --bg: #f7fff9;
       --shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
       --radius: 16px;
+      --transition: all 0.3s ease;
     }
 
     * {
@@ -26,7 +28,7 @@
     }
 
     body {
-      background: var(--bg);
+      background: linear-gradient(180deg, #f7fff9, #ffffff);
       color: var(--text-dark);
       line-height: 1.6;
     }
@@ -36,7 +38,7 @@
     }
 
     header {
-      background: rgba(11, 107, 61, 0.96);
+      background: rgba(11, 107, 61, 0.97);
       color: var(--white);
       padding: 18px 8%;
       display: flex;
@@ -44,9 +46,6 @@
       align-items: center;
       flex-wrap: wrap;
       gap: 12px;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
     }
 
     .logo {
@@ -60,143 +59,129 @@
 
     .back-link {
       color: var(--white);
-      font-weight: bold;
+      font-weight: 700;
       background: rgba(255,255,255,0.12);
-      padding: 10px 14px;
+      padding: 10px 16px;
       border-radius: 999px;
     }
 
     .hero {
-      background: linear-gradient(135deg, var(--green-dark), var(--green-light));
-      color: var(--white);
+      padding: 70px 8% 30px;
       text-align: center;
-      padding: 70px 8% 50px;
     }
 
     .hero h1 {
-      font-size: 2.4rem;
+      font-size: 2.5rem;
+      color: var(--green-main);
       margin-bottom: 12px;
     }
 
     .hero p {
-      max-width: 760px;
+      max-width: 820px;
       margin: 0 auto;
-      color: #effff5;
+      color: var(--text-light);
     }
 
-    .container {
-      max-width: 1100px;
-      margin: -30px auto 60px;
-      padding: 0 20px;
+    .wrapper {
+      padding: 20px 8% 70px;
     }
 
-    .form-wrapper {
+    .form-card {
+      max-width: 1000px;
+      margin: 0 auto;
       background: var(--white);
-      border-radius: 20px;
+      border-radius: 24px;
       box-shadow: var(--shadow);
-      padding: 35px;
+      padding: 34px;
       border: 1px solid #edf7f0;
     }
 
-    .info-box {
-      background: var(--green-soft);
-      border: 1px solid #d6f5e3;
-      border-radius: 14px;
-      padding: 18px;
-      margin-bottom: 25px;
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+      margin-bottom: 28px;
     }
 
-    .info-box h3 {
+    .info-item {
+      background: #f8fffb;
+      border: 1px solid #e5f8ec;
+      border-radius: 14px;
+      padding: 18px;
+    }
+
+    .info-item strong {
+      display: block;
       color: var(--green-main);
       margin-bottom: 8px;
     }
 
-    .form-title {
-      font-size: 1.8rem;
+    .section-label {
+      margin: 28px 0 14px;
+      font-size: 1.1rem;
       color: var(--green-main);
-      margin-bottom: 10px;
-    }
-
-    .form-subtitle {
-      color: var(--text-light);
-      margin-bottom: 28px;
+      font-weight: 800;
     }
 
     form {
       display: grid;
-      gap: 18px;
+      gap: 16px;
     }
 
-    .grid-2 {
+    .row {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 18px;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
     }
 
-    .field {
-      display: flex;
-      flex-direction: column;
-    }
-
-    .field label {
-      font-weight: 700;
-      margin-bottom: 8px;
-      color: var(--text-dark);
-    }
-
-    .field input,
-    .field select,
-    .field textarea {
-      padding: 14px;
-      border: 1px solid #d8e8dd;
+    input, select, textarea {
+      width: 100%;
+      padding: 14px 16px;
       border-radius: 12px;
-      font-size: 1rem;
-      outline: none;
+      border: 1px solid #dbeee3;
       background: #fcfffd;
+      font-size: 0.98rem;
+      outline: none;
+      transition: var(--transition);
     }
 
-    .field input:focus,
-    .field select:focus,
-    .field textarea:focus {
-      border-color: var(--green-main);
-      box-shadow: 0 0 0 3px rgba(15, 143, 80, 0.1);
+    input:focus, select:focus, textarea:focus {
+      border-color: var(--green-light);
+      box-shadow: 0 0 0 3px rgba(25, 184, 100, 0.12);
     }
 
     textarea {
+      min-height: 130px;
       resize: vertical;
-      min-height: 140px;
+    }
+
+    .helper {
+      font-size: 0.92rem;
+      color: var(--text-light);
     }
 
     .submit-btn {
-      background: linear-gradient(135deg, var(--green-dark), var(--green-light));
-      color: var(--white);
       border: none;
-      padding: 16px;
-      border-radius: 12px;
+      background: linear-gradient(135deg, var(--green-main), var(--green-light));
+      color: var(--white);
+      padding: 16px 22px;
+      border-radius: 14px;
       font-size: 1rem;
       font-weight: 800;
       cursor: pointer;
+      box-shadow: 0 12px 24px rgba(15, 143, 80, 0.18);
+      transition: var(--transition);
     }
 
     .submit-btn:hover {
-      opacity: 0.95;
-    }
-
-    .note {
-      margin-top: 20px;
-      background: #fff9e8;
-      color: #7a5d00;
-      border: 1px solid #f4e2a5;
-      border-radius: 12px;
-      padding: 14px 16px;
-      font-size: 0.95rem;
+      transform: translateY(-2px);
     }
 
     footer {
       background: #063b21;
-      color: white;
+      color: #dfffea;
       text-align: center;
-      padding: 22px;
+      padding: 22px 8%;
     }
 
     @media (max-width: 768px) {
@@ -204,12 +189,8 @@
         font-size: 2rem;
       }
 
-      .form-wrapper {
+      .form-card {
         padding: 24px;
-      }
-
-      .grid-2 {
-        grid-template-columns: 1fr;
       }
 
       header {
@@ -229,95 +210,107 @@
   <section class="hero">
     <h1>Demande de professeur</h1>
     <p>
-      Ce formulaire est destiné aux fondateurs d’établissements privés, directeurs et responsables
-      souhaitant recruter un ou plusieurs enseignants.
+      Ce formulaire est destiné aux établissements privés souhaitant recruter un ou plusieurs enseignants.
+      Remplissez les informations ci-dessous pour transmettre votre besoin de manière claire et professionnelle.
     </p>
   </section>
 
-  <div class="container">
-    <div class="form-wrapper">
-      <div class="info-box">
-        <h3>Formulaire Établissement</h3>
-        <p>Remplissez les informations ci-dessous pour nous transmettre votre besoin de recrutement.</p>
+  <section class="wrapper">
+    <div class="form-card">
+
+      <div class="info-grid">
+        <div class="info-item">
+          <strong>Service</strong>
+          RecruPPrivé.CI
+        </div>
+        <div class="info-item">
+          <strong>Email professionnel</strong>
+          contact.recrutprive@gmail.com
+        </div>
+        <div class="info-item">
+          <strong>Mobile Money</strong>
+          07 59 12 82 28
+        </div>
       </div>
 
-      <h2 class="form-title">Informations de la demande</h2>
-      <p class="form-subtitle">Les champs ci-dessous permettront d’identifier précisément votre besoin.</p>
+      <form action="https://formspree.io/f/mnjorwey" method="POST">
+        <input type="hidden" name="_subject" value="Nouvelle demande de professeur - RecruPPrivé.CI" />
+        <input type="hidden" name="_language" value="fr" />
+        <input type="hidden" name="type_formulaire" value="Demande de professeur" />
 
-      <form>
-        <div class="grid-2">
-          <div class="field">
-            <label for="etablissement">Nom de l’établissement</label>
-            <input type="text" id="etablissement" placeholder="Ex : Collège Moderne Les Étoiles" />
-          </div>
+        <div class="section-label">Informations de l’établissement</div>
 
-          <div class="field">
-            <label for="responsable">Nom du responsable</label>
-            <input type="text" id="responsable" placeholder="Ex : M. Kouassi Jean" />
-          </div>
+        <div class="row">
+          <input type="text" name="nom_etablissement" placeholder="Nom de l’établissement" required />
+          <input type="text" name="nom_responsable" placeholder="Nom du responsable / fondateur" required />
         </div>
 
-        <div class="grid-2">
-          <div class="field">
-            <label for="telephone">Téléphone</label>
-            <input type="tel" id="telephone" placeholder="Ex : 07 00 00 00 00" />
-          </div>
-
-          <div class="field">
-            <label for="email">Email</label>
-            <input type="email" id="email" placeholder="Ex : contact@ecole.ci" />
-          </div>
+        <div class="row">
+          <input type="email" name="email" placeholder="Adresse email professionnelle" required />
+          <input type="text" name="telephone" placeholder="Numéro de téléphone" required />
         </div>
 
-        <div class="grid-2">
-          <div class="field">
-            <label for="matiere">Matière recherchée</label>
-            <input type="text" id="matiere" placeholder="Ex : Mathématiques, Français..." />
-          </div>
-
-          <div class="field">
-            <label for="niveau">Niveau concerné</label>
-            <select id="niveau">
-              <option value="">Sélectionnez un niveau</option>
-              <option>Préscolaire</option>
-              <option>Primaire</option>
-              <option>Collège</option>
-              <option>Lycée</option>
-              <option>Supérieur / Formation</option>
-            </select>
-          </div>
+        <div class="row">
+          <input type="text" name="ville" placeholder="Ville / Commune" required />
+          <select name="type_etablissement" required>
+            <option value="">Type d’établissement</option>
+            <option value="Maternelle">Maternelle</option>
+            <option value="Primaire">Primaire</option>
+            <option value="Secondaire">Secondaire</option>
+            <option value="Technique">Technique / Professionnel</option>
+            <option value="Superieur">Supérieur</option>
+            <option value="Autre">Autre</option>
+          </select>
         </div>
 
-        <div class="grid-2">
-          <div class="field">
-            <label for="nombre">Nombre d’enseignants recherchés</label>
-            <input type="number" id="nombre" placeholder="Ex : 1, 2, 3..." />
-          </div>
+        <div class="section-label">Besoin en recrutement</div>
 
-          <div class="field">
-            <label for="ville">Ville / Commune</label>
-            <input type="text" id="ville" placeholder="Ex : Abidjan, Yopougon, Cocody..." />
-          </div>
+        <div class="row">
+          <input type="text" name="matiere" placeholder="Matière recherchée (ex: Mathématiques)" required />
+          <input type="text" name="niveau" placeholder="Niveau concerné (ex: Collège, Lycée...)" required />
         </div>
 
-        <div class="field">
-          <label for="details">Détails du besoin</label>
-          <textarea id="details" placeholder="Précisez les horaires, l’expérience souhaitée, le type de contrat, la date de prise de fonction, les exigences particulières, etc."></textarea>
+        <div class="row">
+          <input type="number" name="nombre_professeurs" placeholder="Nombre de professeurs recherchés" min="1" />
+          <select name="experience_souhaitee" required>
+            <option value="">Expérience souhaitée</option>
+            <option value="Debutant accepte">Débutant accepté</option>
+            <option value="1 a 2 ans">1 à 2 ans</option>
+            <option value="3 a 5 ans">3 à 5 ans</option>
+            <option value="5 ans et plus">5 ans et plus</option>
+          </select>
         </div>
 
-        <button type="submit" class="submit-btn">Envoyer la demande</button>
+        <div class="row">
+          <select name="type_contrat">
+            <option value="">Type de contrat</option>
+            <option value="Temps plein">Temps plein</option>
+            <option value="Temps partiel">Temps partiel</option>
+            <option value="Vacation">Vacation</option>
+            <option value="A definir">À définir</option>
+          </select>
+
+          <input type="text" name="disponibilite_souhaitee" placeholder="Date / délai souhaité pour le recrutement" />
+        </div>
+
+        <textarea name="criteres_specifiques" placeholder="Critères spécifiques, diplômes souhaités, compétences attendues, détails complémentaires..." required></textarea>
+
+        <div class="section-label">Informations complémentaires</div>
+
+        <textarea name="message_complementaire" placeholder="Ajoutez ici toute précision utile concernant le poste, les horaires, l’environnement de travail, ou vos attentes."></textarea>
+
+        <p class="helper">
+          En validant ce formulaire, votre demande sera transmise à RecruPPrivé.CI via Formspree pour traitement.
+        </p>
+
+        <button type="submit" class="submit-btn">Envoyer la demande de professeur</button>
       </form>
-
-      <div class="note">
-        <strong>Note :</strong> Dans cette Version 4, le bouton est prêt visuellement.
-        Dans la prochaine version, ce formulaire sera relié à votre email professionnel.
-      </div>
     </div>
-  </div>
+  </section>
 
   <footer>
-    <p>&copy; 2026 RecruPPrivé.CI - Tous droits réservés</p>
+    &copy; 2026 RecruPPrivé.CI - Tous droits réservés
   </footer>
 
 </body>
-              </html>
+</html>
