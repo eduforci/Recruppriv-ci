@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Demande de professeur - RecruPPrivé.CI</title>
+  <style>
+    :root {
+      --green-dark: #0b6b3d;
+      --green-main: #0f8f50;
+      --green-light: #19b864;
+      --green-soft: #eafbf1;
+      --text-dark: #1f2937;
+      --text-light: #6b7280;
+      --white: #ffffff;
+      --bg: #f7fff9;
+      --shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      --radius: 16px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text-dark);
+      line-height: 1.6;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    header {
+      background: rgba(11, 107, 61, 0.96);
+      color: var(--white);
+      padding: 18px 8%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 800;
+    }
+
+    .logo span {
+      color: #b9ffd5;
+    }
+
+    .back-link {
+      color: var(--white);
+      font-weight: bold;
+      background: rgba(255,255,255,0.12);
+      padding: 10px 14px;
+      border-radius: 999px;
+    }
+
+    .hero {
+      background: linear-gradient(135deg, var(--green-dark), var(--green-light));
+      color: var(--white);
+      text-align: center;
+      padding: 70px 8% 50px;
+    }
+
+    .hero h1 {
+      font-size: 2.4rem;
+      margin-bottom: 12px;
+    }
+
+    .hero p {
+      max-width: 760px;
+      margin: 0 auto;
+      color: #effff5;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: -30px auto 60px;
+      padding: 0 20px;
+    }
+
+    .form-wrapper {
+      background: var(--white);
+      border-radius: 20px;
+      box-shadow: var(--shadow);
+      padding: 35px;
+      border: 1px solid #edf7f0;
+    }
+
+    .info-box {
+      background: var(--green-soft);
+      border: 1px solid #d6f5e3;
+      border-radius: 14px;
+      padding: 18px;
+      margin-bottom: 25px;
+    }
+
+    .info-box h3 {
+      color: var(--green-main);
+      margin-bottom: 8px;
+    }
+
+    .form-title {
+      font-size: 1.8rem;
+      color: var(--green-main);
+      margin-bottom: 10px;
+    }
+
+    .form-subtitle {
+      color: var(--text-light);
+      margin-bottom: 28px;
+    }
+
+    form {
+      display: grid;
+      gap: 18px;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+    }
+
+    .field {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .field label {
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: var(--text-dark);
+    }
+
+    .field input,
+    .field select,
+    .field textarea {
+      padding: 14px;
+      border: 1px solid #d8e8dd;
+      border-radius: 12px;
+      font-size: 1rem;
+      outline: none;
+      background: #fcfffd;
+    }
+
+    .field input:focus,
+    .field select:focus,
+    .field textarea:focus {
+      border-color: var(--green-main);
+      box-shadow: 0 0 0 3px rgba(15, 143, 80, 0.1);
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 140px;
+    }
+
+    .submit-btn {
+      background: linear-gradient(135deg, var(--green-dark), var(--green-light));
+      color: var(--white);
+      border: none;
+      padding: 16px;
+      border-radius: 12px;
+      font-size: 1rem;
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    .submit-btn:hover {
+      opacity: 0.95;
+    }
+
+    .note {
+      margin-top: 20px;
+      background: #fff9e8;
+      color: #7a5d00;
+      border: 1px solid #f4e2a5;
+      border-radius: 12px;
+      padding: 14px 16px;
+      font-size: 0.95rem;
+    }
+
+    footer {
+      background: #063b21;
+      color: white;
+      text-align: center;
+      padding: 22px;
+    }
+
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 2rem;
+      }
+
+      .form-wrapper {
+        padding: 24px;
+      }
+
+      .grid-2 {
+        grid-template-columns: 1fr;
+      }
+
+      header {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">RecruPPrivé<span>.CI</span></div>
+    <a href="index.html" class="back-link">← Retour à l'accueil</a>
+  </header>
+
+  <section class="hero">
+    <h1>Demande de professeur</h1>
+    <p>
+      Ce formulaire est destiné aux fondateurs d’établissements privés, directeurs et responsables
+      souhaitant recruter un ou plusieurs enseignants.
+    </p>
+  </section>
+
+  <div class="container">
+    <div class="form-wrapper">
+      <div class="info-box">
+        <h3>Formulaire Établissement</h3>
+        <p>Remplissez les informations ci-dessous pour nous transmettre votre besoin de recrutement.</p>
+      </div>
+
+      <h2 class="form-title">Informations de la demande</h2>
+      <p class="form-subtitle">Les champs ci-dessous permettront d’identifier précisément votre besoin.</p>
+
+      <form>
+        <div class="grid-2">
+          <div class="field">
+            <label for="etablissement">Nom de l’établissement</label>
+            <input type="text" id="etablissement" placeholder="Ex : Collège Moderne Les Étoiles" />
+          </div>
+
+          <div class="field">
+            <label for="responsable">Nom du responsable</label>
+            <input type="text" id="responsable" placeholder="Ex : M. Kouassi Jean" />
+          </div>
+        </div>
+
+        <div class="grid-2">
+          <div class="field">
+            <label for="telephone">Téléphone</label>
+            <input type="tel" id="telephone" placeholder="Ex : 07 00 00 00 00" />
+          </div>
+
+          <div class="field">
+            <label for="email">Email</label>
+            <input type="email" id="email" placeholder="Ex : contact@ecole.ci" />
+          </div>
+        </div>
+
+        <div class="grid-2">
+          <div class="field">
+            <label for="matiere">Matière recherchée</label>
+            <input type="text" id="matiere" placeholder="Ex : Mathématiques, Français..." />
+          </div>
+
+          <div class="field">
+            <label for="niveau">Niveau concerné</label>
+            <select id="niveau">
+              <option value="">Sélectionnez un niveau</option>
+              <option>Préscolaire</option>
+              <option>Primaire</option>
+              <option>Collège</option>
+              <option>Lycée</option>
+              <option>Supérieur / Formation</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="grid-2">
+          <div class="field">
+            <label for="nombre">Nombre d’enseignants recherchés</label>
+            <input type="number" id="nombre" placeholder="Ex : 1, 2, 3..." />
+          </div>
+
+          <div class="field">
+            <label for="ville">Ville / Commune</label>
+            <input type="text" id="ville" placeholder="Ex : Abidjan, Yopougon, Cocody..." />
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="details">Détails du besoin</label>
+          <textarea id="details" placeholder="Précisez les horaires, l’expérience souhaitée, le type de contrat, la date de prise de fonction, les exigences particulières, etc."></textarea>
+        </div>
+
+        <button type="submit" class="submit-btn">Envoyer la demande</button>
+      </form>
+
+      <div class="note">
+        <strong>Note :</strong> Dans cette Version 4, le bouton est prêt visuellement.
+        Dans la prochaine version, ce formulaire sera relié à votre email professionnel.
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p>&copy; 2026 RecruPPrivé.CI - Tous droits réservés</p>
+  </footer>
+
+</body>
+              </html>
