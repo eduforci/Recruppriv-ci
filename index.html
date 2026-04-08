@@ -12,6 +12,10 @@
       font-family: Arial, sans-serif;
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       background-color: #f5fff8;
       color: #222;
@@ -88,6 +92,8 @@
       font-weight: bold;
       transition: 0.3s;
       font-size: 1rem;
+      border: none;
+      cursor: pointer;
     }
 
     .btn-primary {
@@ -200,6 +206,90 @@
       margin: 0 auto 25px;
     }
 
+    .forms-section {
+      background: #eefcf3;
+    }
+
+    .forms-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 30px;
+    }
+
+    .form-card {
+      background: white;
+      padding: 28px;
+      border-radius: 16px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+    }
+
+    .form-card h3 {
+      color: #0b8f4d;
+      margin-bottom: 10px;
+      font-size: 1.4rem;
+    }
+
+    .form-card p {
+      color: #555;
+      margin-bottom: 20px;
+      font-size: 0.95rem;
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 6px;
+      font-weight: bold;
+      color: #333;
+      font-size: 0.95rem;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #cfe8d8;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      outline: none;
+      transition: 0.3s;
+      background: #fff;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: #0b8f4d;
+      box-shadow: 0 0 0 3px rgba(11, 143, 77, 0.1);
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 110px;
+    }
+
+    .submit-btn {
+      width: 100%;
+      background: #0b8f4d;
+      color: white;
+      padding: 14px;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .submit-btn:hover {
+      background: #09723d;
+      transform: translateY(-2px);
+    }
+
     .contact-box {
       background: white;
       max-width: 800px;
@@ -212,6 +302,16 @@
 
     .contact-box p {
       margin: 10px 0;
+    }
+
+    .notice {
+      margin-top: 18px;
+      font-size: 0.92rem;
+      color: #444;
+      background: #f8fff9;
+      padding: 12px;
+      border-left: 4px solid #0b8f4d;
+      border-radius: 8px;
     }
 
     footer {
@@ -240,6 +340,10 @@
       nav {
         justify-content: center;
       }
+
+      .cta {
+        margin: 0 5% 40px;
+      }
     }
   </style>
 </head>
@@ -251,6 +355,7 @@
       <a href="#accueil">Accueil</a>
       <a href="#services">Nos services</a>
       <a href="#fonctionnement">Comment ça marche</a>
+      <a href="#formulaires">Formulaires</a>
       <a href="#contact">Contact</a>
     </nav>
   </header>
@@ -262,8 +367,8 @@
       à la recherche d’opportunités professionnelles en Côte d’Ivoire.
     </p>
     <div class="hero-buttons">
-      <a href="#contact" class="btn btn-primary">Demande de professeur</a>
-      <a href="#contact" class="btn btn-secondary">Poser ma candidature</a>
+      <a href="#demande-professeur" class="btn btn-primary">Demande de professeur</a>
+      <a href="#candidature-enseignant" class="btn btn-secondary">Poser ma candidature</a>
     </div>
   </section>
 
@@ -361,8 +466,133 @@
       RecruPPrivé.CI vous offre une solution claire, professionnelle et adaptée au contexte ivoirien.
     </p>
     <div class="hero-buttons">
-      <a href="#contact" class="btn btn-primary">Faire une demande</a>
-      <a href="#contact" class="btn btn-secondary">Déposer ma candidature</a>
+      <a href="#demande-professeur" class="btn btn-primary">Faire une demande</a>
+      <a href="#candidature-enseignant" class="btn btn-secondary">Déposer ma candidature</a>
+    </div>
+  </section>
+
+  <section id="formulaires" class="forms-section">
+    <h2 class="section-title">Formulaires</h2>
+    <p class="section-subtitle">
+      Deux formulaires distincts pour les établissements privés et les enseignants.
+    </p>
+
+    <div class="forms-grid">
+      <!-- Formulaire Demande de professeur -->
+      <div class="form-card" id="demande-professeur">
+        <h3>Demande de professeur</h3>
+        <p>Réservé aux fondateurs et responsables d’établissements privés.</p>
+
+        <form action="https://formspree.io/f/TON_CODE_ICI" method="POST">
+          <input type="hidden" name="type_formulaire" value="Demande de professeur">
+
+          <div class="form-group">
+            <label for="etablissement">Nom de l’établissement</label>
+            <input type="text" id="etablissement" name="Nom de l’établissement" required>
+          </div>
+
+          <div class="form-group">
+            <label for="ville-etab">Ville</label>
+            <input type="text" id="ville-etab" name="Ville" required>
+          </div>
+
+          <div class="form-group">
+            <label for="matiere-recherchee">Matière recherchée</label>
+            <input type="text" id="matiere-recherchee" name="Matière recherchée" required>
+          </div>
+
+          <div class="form-group">
+            <label for="niveau-recherche">Niveau concerné</label>
+            <select id="niveau-recherche" name="Niveau concerné" required>
+              <option value="">Sélectionnez</option>
+              <option>Préscolaire</option>
+              <option>Primaire</option>
+              <option>Collège</option>
+              <option>Lycée</option>
+              <option>Supérieur</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="telephone-etab">Téléphone</label>
+            <input type="tel" id="telephone-etab" name="Téléphone" required>
+          </div>
+
+          <div class="form-group">
+            <label for="email-etab">Email</label>
+            <input type="email" id="email-etab" name="Email" required>
+          </div>
+
+          <div class="form-group">
+            <label for="message-etab">Détails de la demande</label>
+            <textarea id="message-etab" name="Détails de la demande" placeholder="Précisez le nombre d’enseignants, le profil recherché, la disponibilité souhaitée, etc." required></textarea>
+          </div>
+
+          <button type="submit" class="submit-btn">Envoyer la demande</button>
+        </form>
+
+        <div class="notice">
+          Les demandes seront reçues par email après configuration de Formspree.
+        </div>
+      </div>
+
+      <!-- Formulaire Candidature enseignant -->
+      <div class="form-card" id="candidature-enseignant">
+        <h3>Poser ma candidature</h3>
+        <p>Réservé aux enseignants souhaitant être recrutés dans le privé.</p>
+
+        <form action="https://formspree.io/f/TON_CODE_ICI" method="POST">
+          <input type="hidden" name="type_formulaire" value="Candidature enseignant">
+
+          <div class="form-group">
+            <label for="nom-complet">Nom complet</label>
+            <input type="text" id="nom-complet" name="Nom complet" required>
+          </div>
+
+          <div class="form-group">
+            <label for="ville-candidat">Ville</label>
+            <input type="text" id="ville-candidat" name="Ville" required>
+          </div>
+
+          <div class="form-group">
+            <label for="matiere-enseignee">Matière enseignée</label>
+            <input type="text" id="matiere-enseignee" name="Matière enseignée" required>
+          </div>
+
+          <div class="form-group">
+            <label for="niveau-enseigne">Niveau enseigné</label>
+            <select id="niveau-enseigne" name="Niveau enseigné" required>
+              <option value="">Sélectionnez</option>
+              <option>Préscolaire</option>
+              <option>Primaire</option>
+              <option>Collège</option>
+              <option>Lycée</option>
+              <option>Supérieur</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="telephone-candidat">Téléphone</label>
+            <input type="tel" id="telephone-candidat" name="Téléphone" required>
+          </div>
+
+          <div class="form-group">
+            <label for="email-candidat">Email</label>
+            <input type="email" id="email-candidat" name="Email" required>
+          </div>
+
+          <div class="form-group">
+            <label for="experience">Expérience / Présentation</label>
+            <textarea id="experience" name="Expérience / Présentation" placeholder="Présentez brièvement votre parcours, vos années d’expérience, diplômes, classes déjà enseignées, etc." required></textarea>
+          </div>
+
+          <button type="submit" class="submit-btn">Envoyer ma candidature</button>
+        </form>
+
+        <div class="notice">
+          Les candidatures seront reçues par email après configuration de Formspree.
+        </div>
+      </div>
     </div>
   </section>
 
@@ -386,4 +616,4 @@
   </footer>
 
 </body>
-                                                           </html>
+                </html>
