@@ -145,6 +145,8 @@
       font-weight: 700;
       transition: var(--transition);
       font-size: 1rem;
+      border: none;
+      cursor: pointer;
     }
 
     .btn-primary {
@@ -351,7 +353,7 @@
 
     .contact-box {
       background: var(--white);
-      max-width: 900px;
+      max-width: 1000px;
       margin: 0 auto;
       padding: 35px;
       border-radius: 20px;
@@ -364,6 +366,7 @@
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
       gap: 18px;
       margin-top: 20px;
+      margin-bottom: 30px;
     }
 
     .contact-item {
@@ -379,14 +382,57 @@
       margin-bottom: 8px;
     }
 
-    .contact-note {
-      margin-top: 22px;
-      background: #fff9e8;
-      color: #7a5d00;
+    .contact-form {
+      display: grid;
+      gap: 16px;
+      margin-top: 10px;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+    }
+
+    .contact-form input,
+    .contact-form select,
+    .contact-form textarea {
+      width: 100%;
       padding: 14px 16px;
       border-radius: 12px;
-      font-size: 0.95rem;
-      border: 1px solid #f4e2a5;
+      border: 1px solid #dbeee3;
+      outline: none;
+      font-size: 0.98rem;
+      background: #fcfffd;
+      transition: var(--transition);
+    }
+
+    .contact-form input:focus,
+    .contact-form select:focus,
+    .contact-form textarea:focus {
+      border-color: var(--green-light);
+      box-shadow: 0 0 0 3px rgba(25, 184, 100, 0.12);
+    }
+
+    .contact-form textarea {
+      min-height: 140px;
+      resize: vertical;
+    }
+
+    .form-helper {
+      font-size: 0.92rem;
+      color: var(--text-light);
+    }
+
+    .submit-btn {
+      background: linear-gradient(135deg, var(--green-main), var(--green-light));
+      color: var(--white);
+      box-shadow: 0 10px 24px rgba(15, 143, 80, 0.18);
+    }
+
+    .submit-btn:hover {
+      transform: translateY(-2px);
+      opacity: 0.96;
     }
 
     footer {
@@ -682,8 +728,8 @@
   <section id="contact">
     <h2 class="section-title">Contact</h2>
     <p class="section-subtitle">
-      En attendant l’intégration complète des formulaires vers email, les pages sont prêtes
-      et le système d’envoi sera ajouté dans la prochaine version.
+      Contactez RecruPPrivé.CI directement via ce formulaire professionnel. Les messages seront transmis
+      via Formspree à votre système de réception.
     </p>
 
     <div class="contact-box">
@@ -700,19 +746,39 @@
 
         <div class="contact-item">
           <strong>Email professionnel</strong>
-          À ajouter prochainement
-        </div>
-
-        <div class="contact-item">
-          <strong>Canal principal</strong>
-          Formulaire dédié (Version 4)
+          contact.recruprive@gmail.com
         </div>
       </div>
 
-      <div class="contact-note">
-        <strong>Important :</strong> Cette version ne contient aucun système WhatsApp.
-        Les formulaires sont séparés et prêts pour l’intégration email dans la prochaine version.
-      </div>
+      <form class="contact-form" action="https://formspree.io/f/mnjorwey" method="POST">
+        <div class="form-row">
+          <input type="text" name="nom" placeholder="Votre nom complet" required />
+          <input type="email" name="email" placeholder="Votre adresse email" required />
+        </div>
+
+        <div class="form-row">
+          <input type="text" name="telephone" placeholder="Votre numéro de téléphone" />
+          <select name="profil" required>
+            <option value="">Vous êtes...</option>
+            <option value="Etablissement prive">Établissement privé</option>
+            <option value="Enseignant candidat">Enseignant candidat</option>
+            <option value="Autre">Autre</option>
+          </select>
+        </div>
+
+        <input type="text" name="objet" placeholder="Objet de votre message" required />
+
+        <textarea name="message" placeholder="Écrivez votre message ici..." required></textarea>
+
+        <input type="hidden" name="_subject" value="Nouveau message depuis RecruPPrivé.CI" />
+        <input type="hidden" name="_language" value="fr" />
+
+        <p class="form-helper">
+          Après envoi, votre message sera transmis via Formspree.
+        </p>
+
+        <button type="submit" class="btn submit-btn">Envoyer le message</button>
+      </form>
     </div>
   </section>
 
