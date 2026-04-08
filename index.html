@@ -13,10 +13,6 @@
       font-family: Arial, sans-serif;
     }
 
-    html {
-      scroll-behavior: smooth;
-    }
-
     body {
       background: #f4fff6;
       color: #1f2937;
@@ -24,10 +20,9 @@
     }
 
     header {
-      background: rgba(11, 125, 69, 0.95);
-      backdrop-filter: blur(8px);
+      background: linear-gradient(135deg, #0f9d58, #0b7d45);
       color: white;
-      padding: 16px 8%;
+      padding: 18px 8%;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -35,23 +30,12 @@
       position: sticky;
       top: 0;
       z-index: 1000;
-      box-shadow: 0 4px 14px rgba(0,0,0,0.1);
+      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
     }
 
-    .logo {
-      display: flex;
-      flex-direction: column;
-    }
-
-    .logo h1 {
-      font-size: 1.6rem;
+    header h1 {
+      font-size: 1.5rem;
       font-weight: bold;
-      line-height: 1.1;
-    }
-
-    .logo span {
-      font-size: 0.8rem;
-      opacity: 0.9;
     }
 
     nav {
@@ -65,7 +49,6 @@
       text-decoration: none;
       font-weight: bold;
       transition: 0.3s;
-      font-size: 0.95rem;
     }
 
     nav a:hover {
@@ -73,63 +56,22 @@
     }
 
     .hero {
-      background: linear-gradient(rgba(15,157,88,0.86), rgba(11,125,69,0.88)),
+      background: linear-gradient(rgba(15,157,88,0.85), rgba(11,125,69,0.85)),
         url('https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
       color: white;
       text-align: center;
-      padding: 100px 8% 90px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero::after {
-      content: "";
-      position: absolute;
-      width: 320px;
-      height: 320px;
-      background: rgba(255,255,255,0.08);
-      border-radius: 50%;
-      top: -80px;
-      right: -80px;
-    }
-
-    .hero::before {
-      content: "";
-      position: absolute;
-      width: 220px;
-      height: 220px;
-      background: rgba(255,255,255,0.06);
-      border-radius: 50%;
-      bottom: -60px;
-      left: -60px;
-    }
-
-    .hero-content {
-      position: relative;
-      z-index: 2;
-      animation: fadeUp 0.8s ease;
-    }
-
-    .hero-badge {
-      display: inline-block;
-      background: rgba(255,255,255,0.15);
-      padding: 8px 14px;
-      border-radius: 999px;
-      font-size: 0.9rem;
-      margin-bottom: 18px;
-      border: 1px solid rgba(255,255,255,0.2);
+      padding: 90px 8% 80px;
     }
 
     .hero h2 {
-      font-size: 2.6rem;
+      font-size: 2.4rem;
       margin-bottom: 15px;
-      line-height: 1.2;
     }
 
     .hero p {
-      max-width: 850px;
-      margin: 0 auto 28px;
-      font-size: 1.08rem;
+      max-width: 800px;
+      margin: 0 auto 25px;
+      font-size: 1.1rem;
     }
 
     .hero-buttons {
@@ -137,13 +79,12 @@
       justify-content: center;
       gap: 15px;
       flex-wrap: wrap;
-      margin-bottom: 35px;
     }
 
     .btn {
       display: inline-block;
       padding: 14px 24px;
-      border-radius: 10px;
+      border-radius: 8px;
       text-decoration: none;
       font-weight: bold;
       transition: 0.3s;
@@ -159,7 +100,6 @@
 
     .btn-primary:hover {
       background: #d1fae5;
-      transform: translateY(-2px);
     }
 
     .btn-secondary {
@@ -169,37 +109,10 @@
 
     .btn-secondary:hover {
       background: #166534;
-      transform: translateY(-2px);
-    }
-
-    .stats {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 18px;
-      max-width: 900px;
-      margin: auto;
-    }
-
-    .stat-box {
-      background: rgba(255,255,255,0.14);
-      border: 1px solid rgba(255,255,255,0.18);
-      border-radius: 14px;
-      padding: 20px;
-      backdrop-filter: blur(6px);
-    }
-
-    .stat-box h3 {
-      font-size: 2rem;
-      margin-bottom: 5px;
-    }
-
-    .stat-box p {
-      font-size: 0.95rem;
-      margin: 0;
     }
 
     section {
-      padding: 70px 8%;
+      padding: 60px 8%;
     }
 
     .section-title {
@@ -222,20 +135,19 @@
     .cards {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 22px;
+      gap: 20px;
     }
 
     .card {
       background: white;
-      padding: 28px;
-      border-radius: 16px;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.07);
+      padding: 25px;
+      border-radius: 14px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.08);
       transition: 0.3s;
-      border: 1px solid #ecfdf3;
     }
 
     .card:hover {
-      transform: translateY(-6px);
+      transform: translateY(-5px);
     }
 
     .card h4 {
@@ -254,12 +166,7 @@
       background: #ecfdf3;
       padding: 25px;
       border-left: 6px solid #0b7d45;
-      border-radius: 14px;
-      transition: 0.3s;
-    }
-
-    .step:hover {
-      transform: translateY(-4px);
+      border-radius: 12px;
     }
 
     .step h4 {
@@ -267,14 +174,18 @@
       margin-bottom: 10px;
     }
 
+    .pricing {
+      background: #ffffff;
+    }
+
     .pricing-box {
-      max-width: 850px;
+      max-width: 800px;
       margin: auto;
       background: #f0fdf4;
       border: 2px solid #bbf7d0;
-      border-radius: 18px;
-      padding: 32px;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.05);
+      border-radius: 16px;
+      padding: 30px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.06);
     }
 
     .pricing-box h4 {
@@ -291,7 +202,7 @@
 
     .pricing-box li {
       margin-bottom: 12px;
-      padding-left: 22px;
+      padding-left: 20px;
       position: relative;
     }
 
@@ -307,14 +218,13 @@
     }
 
     .form-container {
-      max-width: 760px;
+      max-width: 700px;
       margin: auto;
       background: #ffffff;
-      padding: 32px;
-      border-radius: 18px;
-      box-shadow: 0 10px 28px rgba(0,0,0,0.08);
+      padding: 30px;
+      border-radius: 16px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.08);
       margin-bottom: 30px;
-      border: 1px solid #eefbf2;
     }
 
     .form-container h4 {
@@ -333,10 +243,9 @@
       width: 100%;
       padding: 14px;
       border: 1px solid #d1d5db;
-      border-radius: 10px;
+      border-radius: 8px;
       font-size: 1rem;
       outline: none;
-      transition: 0.3s;
     }
 
     input:focus, textarea:focus, select:focus {
@@ -349,25 +258,14 @@
       resize: vertical;
     }
 
-    .success-note {
-      background: #ecfdf3;
-      color: #166534;
-      border: 1px solid #bbf7d0;
-      padding: 14px;
-      border-radius: 10px;
-      font-size: 0.95rem;
-      margin-bottom: 16px;
-    }
-
     .contact-box {
-      max-width: 760px;
+      max-width: 700px;
       margin: auto;
       background: #ecfdf3;
-      padding: 28px;
-      border-radius: 16px;
+      padding: 25px;
+      border-radius: 14px;
       text-align: center;
       border: 1px solid #bbf7d0;
-      box-shadow: 0 8px 22px rgba(0,0,0,0.04);
     }
 
     .contact-box p {
@@ -378,42 +276,19 @@
       background: #0b7d45;
       color: white;
       text-align: center;
-      padding: 28px 20px;
-      margin-top: 20px;
-    }
-
-    footer p {
-      margin: 5px 0;
-    }
-
-    .fade-in {
-      animation: fadeUp 0.8s ease;
-    }
-
-    @keyframes fadeUp {
-      from {
-        opacity: 0;
-        transform: translateY(18px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+      padding: 20px;
+      margin-top: 30px;
     }
 
     @media (max-width: 768px) {
       header {
         flex-direction: column;
-        gap: 12px;
+        gap: 10px;
         text-align: center;
       }
 
-      .hero {
-        padding: 80px 6% 70px;
-      }
-
       .hero h2 {
-        font-size: 1.9rem;
+        font-size: 1.8rem;
       }
 
       .hero p {
@@ -423,66 +298,36 @@
       nav {
         justify-content: center;
       }
-
-      section {
-        padding: 55px 6%;
-      }
-
-      .form-container {
-        padding: 22px;
-      }
     }
   </style>
 </head>
 <body>
 
   <header>
-    <div class="logo">
-      <h1>RecruPPrivé.CI</h1>
-      <span>Recrutement d’enseignants du privé</span>
-    </div>
+    <h1>RecruPPrivé.CI</h1>
     <nav>
-      <a href="#services">Services</a>
-      <a href="#fonctionnement">Fonctionnement</a>
+      <a href="#services">Nos services</a>
+      <a href="#fonctionnement">Comment ça marche</a>
       <a href="#tarifs">Tarifs</a>
-      <a href="#ecole">Écoles</a>
+      <a href="#ecole">Demande école</a>
       <a href="#candidature">Candidature</a>
       <a href="#contact">Contact</a>
     </nav>
   </header>
 
   <section class="hero">
-    <div class="hero-content">
-      <div class="hero-badge">Plateforme dédiée au recrutement scolaire en Côte d’Ivoire</div>
-      <h2>La plateforme professionnelle de recrutement d’enseignants du privé</h2>
-      <p>
-        RecruPPrivé.CI facilite la mise en relation entre les établissements privés
-        et les enseignants qualifiés, de façon simple, rapide et professionnelle.
-      </p>
-
-      <div class="hero-buttons">
-        <a href="#ecole" class="btn btn-primary">Demande de professeur</a>
-        <a href="#candidature" class="btn btn-secondary">Poser ma candidature</a>
-      </div>
-
-      <div class="stats">
-        <div class="stat-box">
-          <h3>+120</h3>
-          <p>Enseignants inscrits</p>
-        </div>
-        <div class="stat-box">
-          <h3>+35</h3>
-          <p>Demandes traitées</p>
-        </div>
-        <div class="stat-box">
-          <h3>+20</h3>
-          <p>Postes disponibles</p>
-        </div>
-      </div>
+    <h2>La plateforme de recrutement d’enseignants du privé en Côte d’Ivoire</h2>
+    <p>
+      RecruPPrivé.CI facilite la mise en relation entre les établissements privés
+      et les enseignants qualifiés, rapidement, simplement et efficacement.
+    </p>
+    <div class="hero-buttons">
+      <a href="#ecole" class="btn btn-primary">Demande de professeur</a>
+      <a href="#candidature" class="btn btn-secondary">Poser ma candidature</a>
     </div>
   </section>
 
-  <section id="services" class="fade-in">
+  <section id="services">
     <div class="section-title">
       <h3>Nos services</h3>
       <p>Des solutions simples et professionnelles pour les écoles privées et les enseignants.</p>
@@ -498,12 +343,12 @@
       </div>
       <div class="card">
         <h4>Candidatures simplifiées</h4>
-        <p>Les enseignants peuvent déposer leur dossier facilement pour être visibles par les recruteurs.</p>
+        <p>Les enseignants peuvent déposer leur dossier de manière simple pour être visibles par les recruteurs.</p>
       </div>
     </div>
   </section>
 
-  <section id="fonctionnement" style="background:#f9fffb;" class="fade-in">
+  <section id="fonctionnement" style="background:#f9fffb;">
     <div class="section-title">
       <h3>Comment ça marche ?</h3>
       <p>Un processus simple pour recruter ou postuler efficacement.</p>
@@ -515,19 +360,19 @@
       </div>
       <div class="step">
         <h4>2. L’enseignant dépose sa candidature</h4>
-        <p>Le candidat soumet ses informations, son niveau et son profil professionnel.</p>
+        <p>Le candidat soumet ses informations et son profil professionnel.</p>
       </div>
       <div class="step">
         <h4>3. Mise en relation</h4>
-        <p>Après étude, nous facilitons la connexion entre l’établissement et le candidat retenu.</p>
+        <p>Après étude, nous facilitons la connexion entre l’école et le candidat retenu.</p>
       </div>
     </div>
   </section>
 
-  <section id="tarifs" class="fade-in">
+  <section id="tarifs" class="pricing">
     <div class="section-title">
       <h3>Tarifs indicatifs</h3>
-      <p>Des frais simples pour assurer un service sérieux, organisé et professionnel.</p>
+      <p>Des frais simples pour assurer un service sérieux et professionnel.</p>
     </div>
     <div class="pricing-box">
       <h4>Conditions actuelles du service</h4>
@@ -540,7 +385,7 @@
     </div>
   </section>
 
-  <section id="ecole" class="form-section fade-in">
+  <section id="ecole" class="form-section">
     <div class="section-title">
       <h3>Demande de professeur</h3>
       <p>Les établissements privés peuvent nous soumettre leurs besoins en recrutement.</p>
@@ -548,14 +393,8 @@
 
     <div class="form-container">
       <h4>Formulaire établissement</h4>
-      <div class="success-note">
-        Après envoi, votre demande sera transmise directement par email via notre système sécurisé.
-      </div>
-
       <form action="https://formspree.io/f/mnjorwey" method="POST">
         <input type="hidden" name="Type de demande" value="Demande de professeur - Établissement privé">
-        <input type="hidden" name="_subject" value="Nouvelle demande de professeur - RecruPPrivé.CI">
-        <input type="hidden" name="_next" value="https://eduforci.github.io/Recruppriv-ci/?success=ecole#ecole">
 
         <input type="text" name="Nom de l'établissement" placeholder="Nom de l'établissement" required>
         <input type="text" name="Nom du responsable" placeholder="Nom du responsable" required>
@@ -579,7 +418,7 @@
     </div>
   </section>
 
-  <section id="candidature" class="form-section fade-in" style="background:#f9fffb;">
+  <section id="candidature" class="form-section" style="background:#f9fffb;">
     <div class="section-title">
       <h3>Poser ma candidature</h3>
       <p>Les enseignants peuvent déposer leur profil pour être contactés en cas d’opportunité.</p>
@@ -587,14 +426,8 @@
 
     <div class="form-container">
       <h4>Formulaire enseignant</h4>
-      <div class="success-note">
-        Votre candidature sera envoyée directement à notre adresse email via Formspree.
-      </div>
-
       <form action="https://formspree.io/f/mnjorwey" method="POST">
         <input type="hidden" name="Type de demande" value="Candidature enseignant">
-        <input type="hidden" name="_subject" value="Nouvelle candidature enseignant - RecruPPrivé.CI">
-        <input type="hidden" name="_next" value="https://eduforci.github.io/Recruppriv-ci/?success=candidature#candidature">
 
         <input type="text" name="Nom complet" placeholder="Nom complet" required>
         <input type="tel" name="Téléphone" placeholder="Numéro de téléphone" required>
@@ -618,7 +451,7 @@
     </div>
   </section>
 
-  <section id="contact" class="fade-in">
+  <section id="contact">
     <div class="section-title">
       <h3>Contact</h3>
       <p>Pour toute information complémentaire, contactez RecruPPrivé.CI.</p>
@@ -632,32 +465,8 @@
   </section>
 
   <footer>
-    <p><strong>© 2026 RecruPPrivé.CI</strong> - Tous droits réservés</p>
-    <p>Plateforme de recrutement d’enseignants du privé en Côte d’Ivoire</p>
+    <p>© 2026 RecruPPrivé.CI - Tous droits réservés</p>
   </footer>
 
-  <script>
-    const params = new URLSearchParams(window.location.search);
-    const success = params.get('success');
-
-    if (success === 'ecole') {
-      const box = document.querySelector('#ecole .form-container');
-      const message = document.createElement('div');
-      message.className = 'success-note';
-      message.style.marginBottom = '18px';
-      message.innerHTML = '✅ Votre demande a été envoyée avec succès. Nous vous contacterons après étude du besoin.';
-      box.insertBefore(message, box.firstChild);
-    }
-
-    if (success === 'candidature') {
-      const box = document.querySelector('#candidature .form-container');
-      const message = document.createElement('div');
-      message.className = 'success-note';
-      message.style.marginBottom = '18px';
-      message.innerHTML = '✅ Votre candidature a été envoyée avec succès. Merci pour votre confiance.';
-      box.insertBefore(message, box.firstChild);
-    }
-  </script>
-
 </body>
-  </html>
+</html>
