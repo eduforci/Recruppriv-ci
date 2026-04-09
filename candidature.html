@@ -1,22 +1,27 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="fr">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Poser ma candidature - RecruPPrivé.CI</title>
-  <meta name="description" content="Formulaire de candidature enseignant pour les établissements privés en Côte d'Ivoire." />
   <style>
     :root {
       --green-dark: #0b6b3d;
       --green-main: #0f8f50;
       --green-light: #19b864;
       --green-soft: #eafbf1;
+      --green-extra: #d9f8e7;
       --text-dark: #1f2937;
       --text-light: #6b7280;
       --white: #ffffff;
       --bg: #f7fff9;
+      --danger: #dc2626;
+      --success: #166534;
+      --success-bg: #dcfce7;
+      --warning-bg: #fef2f2;
       --shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-      --radius: 16px;
+      --shadow-soft: 0 12px 30px rgba(15, 143, 80, 0.12);
+      --radius: 18px;
       --transition: all 0.3s ease;
     }
 
@@ -27,8 +32,12 @@
       font-family: Arial, sans-serif;
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
-      background: linear-gradient(180deg, #f7fff9, #ffffff);
+      background: linear-gradient(180deg, #f7fff9 0%, #f3fff7 100%);
       color: var(--text-dark);
       line-height: 1.6;
     }
@@ -38,19 +47,25 @@
     }
 
     header {
-      background: rgba(11, 107, 61, 0.97);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(11, 107, 61, 0.96);
+      backdrop-filter: blur(8px);
       color: var(--white);
-      padding: 18px 8%;
+      padding: 16px 8%;
       display: flex;
       justify-content: space-between;
       align-items: center;
       flex-wrap: wrap;
       gap: 12px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.08);
     }
 
     .logo {
-      font-size: 1.5rem;
+      font-size: 1.6rem;
       font-weight: 800;
+      letter-spacing: 0.3px;
     }
 
     .logo span {
@@ -63,139 +78,322 @@
       background: rgba(255,255,255,0.12);
       padding: 10px 16px;
       border-radius: 999px;
+      transition: var(--transition);
+    }
+
+    .back-link:hover {
+      background: rgba(255,255,255,0.2);
+      transform: translateY(-2px);
     }
 
     .hero {
-      padding: 70px 8% 30px;
+      background:
+        linear-gradient(rgba(8, 73, 40, 0.86), rgba(15, 143, 80, 0.78)),
+        url('https://images.unsplash.com/photo-1513258496099-48168024aec0?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+      color: var(--white);
       text-align: center;
+      padding: 85px 8% 65px;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      background: rgba(255,255,255,0.14);
+      border: 1px solid rgba(255,255,255,0.22);
+      padding: 8px 14px;
+      border-radius: 999px;
+      font-size: 0.9rem;
+      margin-bottom: 16px;
     }
 
     .hero h1 {
-      font-size: 2.5rem;
-      color: var(--green-main);
-      margin-bottom: 12px;
+      font-size: 2.7rem;
+      margin-bottom: 14px;
+      font-weight: 800;
+      line-height: 1.2;
     }
 
     .hero p {
-      max-width: 820px;
+      max-width: 760px;
       margin: 0 auto;
-      color: var(--text-light);
+      color: #effff5;
+      font-size: 1.05rem;
     }
 
-    .wrapper {
-      padding: 20px 8% 70px;
+    .form-section {
+      padding: 60px 8%;
     }
 
-    .form-card {
-      max-width: 1000px;
+    .form-box {
+      max-width: 980px;
       margin: 0 auto;
       background: var(--white);
+      padding: 36px;
       border-radius: 24px;
       box-shadow: var(--shadow);
-      padding: 34px;
       border: 1px solid #edf7f0;
     }
 
-    .info-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 16px;
-      margin-bottom: 28px;
-    }
-
-    .info-item {
-      background: #f8fffb;
-      border: 1px solid #e5f8ec;
-      border-radius: 14px;
-      padding: 18px;
-    }
-
-    .info-item strong {
-      display: block;
+    .form-title {
+      text-align: center;
       color: var(--green-main);
+      font-size: 2rem;
       margin-bottom: 8px;
-    }
-
-    .section-label {
-      margin: 28px 0 14px;
-      font-size: 1.1rem;
-      color: var(--green-main);
       font-weight: 800;
     }
 
-    form {
+    .form-subtitle {
+      text-align: center;
+      color: var(--text-light);
+      margin-bottom: 28px;
+      font-size: 0.98rem;
+    }
+
+    .success-box {
+      display: none;
+      background: var(--success-bg);
+      color: var(--success);
+      border: 1px solid #86efac;
+      padding: 14px 16px;
+      border-radius: 12px;
+      margin-bottom: 20px;
+      font-weight: 700;
+    }
+
+    .error-box {
+      display: none;
+      background: var(--warning-bg);
+      color: var(--danger);
+      border: 1px solid #fecaca;
+      padding: 14px 16px;
+      border-radius: 12px;
+      margin-bottom: 20px;
+      font-weight: 700;
+    }
+
+    .contact-form {
       display: grid;
+      gap: 18px;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
       gap: 16px;
     }
 
-    .row {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 16px;
+    .field-group {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
     }
 
-    input, select, textarea {
+    .field-group label {
+      font-weight: 700;
+      color: var(--green-main);
+      font-size: 0.95rem;
+    }
+
+    .contact-form input,
+    .contact-form select,
+    .contact-form textarea {
       width: 100%;
       padding: 14px 16px;
       border-radius: 12px;
       border: 1px solid #dbeee3;
-      background: #fcfffd;
-      font-size: 0.98rem;
       outline: none;
+      font-size: 0.98rem;
+      background: #fcfffd;
       transition: var(--transition);
     }
 
-    input:focus, select:focus, textarea:focus {
+    .contact-form input:focus,
+    .contact-form select:focus,
+    .contact-form textarea:focus {
       border-color: var(--green-light);
       box-shadow: 0 0 0 3px rgba(25, 184, 100, 0.12);
     }
 
-    textarea {
+    .contact-form textarea {
       min-height: 130px;
       resize: vertical;
     }
 
-    .helper {
-      font-size: 0.92rem;
+    .upload-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 18px;
+      margin-top: 8px;
+    }
+
+    .file-box {
+      background: linear-gradient(180deg, #fafffc 0%, #f4fff8 100%);
+      border: 1px solid #dcefe4;
+      border-radius: 18px;
+      padding: 20px;
+      transition: var(--transition);
+    }
+
+    .file-box:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .file-box h3 {
+      color: var(--green-main);
+      margin-bottom: 8px;
+      font-size: 1.05rem;
+    }
+
+    .file-box p {
       color: var(--text-light);
+      font-size: 0.92rem;
+      margin-bottom: 14px;
+    }
+
+    .custom-file {
+      position: relative;
+      display: block;
+      width: 100%;
+    }
+
+    .custom-file input[type="file"] {
+      display: none;
+    }
+
+    .file-btn {
+      display: inline-block;
+      width: 100%;
+      background: var(--green-soft);
+      color: var(--green-main);
+      border: 1px dashed var(--green-light);
+      padding: 14px 16px;
+      border-radius: 12px;
+      text-align: center;
+      font-weight: 700;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .file-btn:hover {
+      background: var(--green-extra);
+    }
+
+    .file-name {
+      margin-top: 10px;
+      font-size: 0.92rem;
+      color: var(--text-dark);
+      background: #ffffff;
+      border: 1px solid #e5f8ec;
+      padding: 10px 12px;
+      border-radius: 10px;
+      min-height: 42px;
+      display: flex;
+      align-items: center;
+      word-break: break-word;
+    }
+
+    .helper-text {
+      font-size: 0.88rem;
+      color: var(--text-light);
+      margin-top: 8px;
+    }
+
+    .important-note {
+      background: #f8fffb;
+      border: 1px solid #dcefe4;
+      border-left: 4px solid var(--green-main);
+      border-radius: 14px;
+      padding: 16px;
+      font-size: 0.94rem;
+      color: var(--text-dark);
     }
 
     .submit-btn {
-      border: none;
       background: linear-gradient(135deg, var(--green-main), var(--green-light));
       color: var(--white);
-      padding: 16px 22px;
+      border: none;
+      padding: 16px 24px;
       border-radius: 14px;
       font-size: 1rem;
       font-weight: 800;
       cursor: pointer;
-      box-shadow: 0 12px 24px rgba(15, 143, 80, 0.18);
+      box-shadow: 0 10px 24px rgba(15, 143, 80, 0.18);
       transition: var(--transition);
     }
 
     .submit-btn:hover {
       transform: translateY(-2px);
+      opacity: 0.96;
+    }
+
+    .submit-btn:disabled {
+      opacity: 0.7;
+      cursor: not-allowed;
+      transform: none;
     }
 
     footer {
       background: #063b21;
-      color: #dfffea;
+      color: var(--white);
+      padding: 24px 8%;
+      margin-top: 30px;
       text-align: center;
-      padding: 22px 8%;
+    }
+
+    footer p {
+      color: #dfffea;
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 900px) {
+      .hero h1 {
+        font-size: 2.2rem;
+      }
+
+      .form-title {
+        font-size: 1.7rem;
+      }
     }
 
     @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .hero {
+        padding: 70px 6% 55px;
+      }
+
       .hero h1 {
         font-size: 2rem;
       }
 
-      .form-card {
-        padding: 24px;
+      .hero p {
+        font-size: 1rem;
       }
 
-      header {
-        flex-direction: column;
-        text-align: center;
+      .form-section {
+        padding: 45px 6%;
+      }
+
+      .form-box {
+        padding: 24px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero h1 {
+        font-size: 1.65rem;
+      }
+
+      .form-box {
+        padding: 18px;
+        border-radius: 18px;
+      }
+
+      .submit-btn {
+        width: 100%;
       }
     }
   </style>
@@ -208,108 +406,254 @@
   </header>
 
   <section class="hero">
-    <h1>Poser ma candidature</h1>
+    <div class="hero-badge">Candidature enseignant - Version premium</div>
+    <h1>Déposez votre candidature en toute simplicité</h1>
     <p>
-      Ce formulaire est destiné aux enseignants souhaitant proposer leur profil aux établissements privés.
-      Présentez votre parcours de manière claire pour augmenter vos chances d’être retenu.
+      Remplissez votre profil, joignez votre CV ainsi qu’une photo d’identité afin d’être
+      considéré pour les opportunités de recrutement dans les établissements privés.
     </p>
   </section>
 
-  <section class="wrapper">
-    <div class="form-card">
+  <section class="form-section">
+    <div class="form-box">
+      <h2 class="form-title">Formulaire de candidature</h2>
+      <p class="form-subtitle">
+        Merci de renseigner des informations exactes et professionnelles.
+      </p>
 
-      <div class="info-grid">
-        <div class="info-item">
-          <strong>Service</strong>
-          RecruPPrivé.CI
-        </div>
-        <div class="info-item">
-          <strong>Email professionnel</strong>
-          contact.recrutprive@gmail.com
-        </div>
-        <div class="info-item">
-          <strong>Mobile Money</strong>
-          07 59 12 82 28
-        </div>
+      <div class="success-box" id="successBox">
+        ✅ Votre formulaire semble prêt à être envoyé.
       </div>
 
-      <form action="https://formspree.io/f/mnjorwey" method="POST">
-        <input type="hidden" name="_subject" value="Nouvelle candidature enseignant - RecruPPrivé.CI" />
-        <input type="hidden" name="_language" value="fr" />
-        <input type="hidden" name="type_formulaire" value="Candidature enseignant" />
+      <div class="error-box" id="errorBox">
+        ⚠️ Vérifiez vos fichiers avant l’envoi.
+      </div>
 
-        <div class="section-label">Informations personnelles</div>
+      <form
+        class="contact-form"
+        id="candidatureForm"
+        action="https://formsubmit.co/contact.recruprive@gmail.com"
+        method="POST"
+        enctype="multipart/form-data"
+      >
+        <div class="form-row">
+          <div class="field-group">
+            <label for="nom_complet">Nom complet</label>
+            <input type="text" id="nom_complet" name="nom_complet" placeholder="Ex: Ouattara Massa" required>
+          </div>
 
-        <div class="row">
-          <input type="text" name="nom_complet" placeholder="Nom complet" required />
-          <input type="email" name="email" placeholder="Adresse email" required />
+          <div class="field-group">
+            <label for="telephone">Téléphone</label>
+            <input type="tel" id="telephone" name="telephone" placeholder="Ex: 07 00 00 00 00" required>
+          </div>
         </div>
 
-        <div class="row">
-          <input type="text" name="telephone" placeholder="Numéro de téléphone" required />
-          <input type="text" name="ville" placeholder="Ville / Commune de résidence" required />
+        <div class="form-row">
+          <div class="field-group">
+            <label for="email">Adresse email</label>
+            <input type="email" id="email" name="email" placeholder="Ex: votreemail@gmail.com" required>
+          </div>
+
+          <div class="field-group">
+            <label for="ville">Commune / Ville</label>
+            <input type="text" id="ville" name="commune_ville" placeholder="Ex: Yopougon, Cocody..." required>
+          </div>
         </div>
 
-        <div class="section-label">Profil professionnel</div>
+        <div class="form-row">
+          <div class="field-group">
+            <label for="matiere">Matière enseignée</label>
+            <select id="matiere" name="matiere" required>
+              <option value="">Sélectionnez une matière</option>
+              <option>Français</option>
+              <option>Mathématiques</option>
+              <option>Anglais</option>
+              <option>Physique-Chimie</option>
+              <option>SVT</option>
+              <option>Histoire-Géographie</option>
+              <option>Philosophie</option>
+              <option>Éducation Civique</option>
+              <option>Informatique</option>
+              <option>Arabe</option>
+              <option>Autre</option>
+            </select>
+          </div>
 
-        <div class="row">
-          <input type="text" name="matiere_principale" placeholder="Matière principale enseignée" required />
-          <input type="text" name="autres_matieres" placeholder="Autres matières (facultatif)" />
+          <div class="field-group">
+            <label for="niveau">Niveau souhaité</label>
+            <select id="niveau" name="niveau" required>
+              <option value="">Sélectionnez un niveau</option>
+              <option>Préscolaire</option>
+              <option>Primaire</option>
+              <option>Collège</option>
+              <option>Lycée</option>
+              <option>Supérieur</option>
+            </select>
+          </div>
         </div>
 
-        <div class="row">
-          <input type="text" name="niveau_enseignement" placeholder="Niveau enseigné (Primaire, Collège, Lycée...)" required />
-          <select name="experience" required>
-            <option value="">Années d’expérience</option>
-            <option value="Debutant">Débutant</option>
-            <option value="1 a 2 ans">1 à 2 ans</option>
-            <option value="3 a 5 ans">3 à 5 ans</option>
-            <option value="5 ans et plus">5 ans et plus</option>
-          </select>
+        <div class="form-row">
+          <div class="field-group">
+            <label for="experience">Expérience</label>
+            <input type="text" id="experience" name="experience" placeholder="Ex: 3 ans" required>
+          </div>
+
+          <div class="field-group">
+            <label for="diplome">Diplôme principal</label>
+            <input type="text" id="diplome" name="diplome" placeholder="Ex: Licence, Master..." required>
+          </div>
         </div>
 
-        <div class="row">
-          <input type="text" name="diplome_principal" placeholder="Diplôme principal / qualification" required />
-          <select name="disponibilite" required>
-            <option value="">Disponibilité</option>
-            <option value="Immediate">Immédiate</option>
-            <option value="Sous quelques jours">Sous quelques jours</option>
-            <option value="Sous quelques semaines">Sous quelques semaines</option>
-            <option value="A discuter">À discuter</option>
-          </select>
+        <div class="field-group">
+          <label for="presentation">Présentation du candidat</label>
+          <textarea id="presentation" name="presentation" placeholder="Présentez brièvement votre profil, vos compétences, vos disponibilités et vos points forts..." required></textarea>
         </div>
 
-        <div class="row">
-          <select name="type_poste_recherche">
-            <option value="">Type de poste recherché</option>
-            <option value="Temps plein">Temps plein</option>
-            <option value="Temps partiel">Temps partiel</option>
-            <option value="Vacation">Vacation</option>
-            <option value="Remplacement">Remplacement</option>
-            <option value="A definir">À définir</option>
-          </select>
+        <div class="upload-grid">
+          <!-- CV -->
+          <div class="file-box">
+            <h3>📄 Joindre votre CV</h3>
+            <p>Formats acceptés : PDF, DOC, DOCX</p>
 
-          <input type="text" name="pret_a_se_deplacer" placeholder="Zone(s) où vous pouvez travailler" />
+            <label class="custom-file">
+              <input type="file" id="cv" name="cv" accept=".pdf,.doc,.docx" required>
+              <span class="file-btn">Choisir mon CV</span>
+            </label>
+
+            <div class="file-name" id="cvFileName">Aucun fichier sélectionné</div>
+            <div class="helper-text">Taille maximale recommandée : 5 Mo</div>
+          </div>
+
+          <!-- PHOTO -->
+          <div class="file-box">
+            <h3>🖼️ Joindre votre photo d’identité</h3>
+            <p>Formats acceptés : JPG, JPEG, PNG</p>
+
+            <label class="custom-file">
+              <input type="file" id="photo_identite" name="photo_identite" accept="image/png, image/jpeg, image/jpg" required>
+              <span class="file-btn">Choisir ma photo</span>
+            </label>
+
+            <div class="file-name" id="photoFileName">Aucun fichier sélectionné</div>
+            <div class="helper-text">Taille maximale recommandée : 2 Mo</div>
+          </div>
         </div>
 
-        <div class="section-label">Présentation du candidat</div>
+        <div class="important-note">
+          <strong>Important :</strong> utilisez une photo claire, récente et de type carte d’identité.
+          Assurez-vous également que votre CV soit lisible et à jour.
+        </div>
 
-        <textarea name="presentation" placeholder="Présentez votre parcours, votre expérience, vos compétences pédagogiques et ce qui fait la valeur de votre profil." required></textarea>
+        <!-- Paramètres FormSubmit -->
+        <input type="hidden" name="_subject" value="Nouvelle candidature reçue - RecruPPrivé.CI">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_template" value="table">
 
-        <textarea name="precisions" placeholder="Ajoutez ici toute information complémentaire utile (résultats obtenus, expérience particulière, préférences, etc.)."></textarea>
-
-        <p class="helper">
-          Ce formulaire transmet votre candidature à RecruPPrivé.CI via Formspree pour étude et orientation.
-        </p>
-
-        <button type="submit" class="submit-btn">Envoyer ma candidature</button>
+        <button type="submit" class="submit-btn" id="submitBtn">Envoyer ma candidature</button>
       </form>
     </div>
   </section>
 
   <footer>
-    &copy; 2026 RecruPPrivé.CI - Tous droits réservés
+    <p>&copy; 2026 RecruPPrivé.CI - Tous droits réservés</p>
   </footer>
 
+  <script>
+    const form = document.getElementById("candidatureForm");
+    const cvInput = document.getElementById("cv");
+    const photoInput = document.getElementById("photo_identite");
+    const cvFileName = document.getElementById("cvFileName");
+    const photoFileName = document.getElementById("photoFileName");
+    const errorBox = document.getElementById("errorBox");
+    const successBox = document.getElementById("successBox");
+    const submitBtn = document.getElementById("submitBtn");
+
+    const MAX_CV_SIZE = 5 * 1024 * 1024; // 5 Mo
+    const MAX_PHOTO_SIZE = 2 * 1024 * 1024; // 2 Mo
+
+    function showError(message) {
+      errorBox.style.display = "block";
+      errorBox.textContent = "⚠️ " + message;
+      successBox.style.display = "none";
+      window.scrollTo({ top: form.offsetTop - 100, behavior: "smooth" });
+    }
+
+    function hideError() {
+      errorBox.style.display = "none";
+    }
+
+    function showSuccess(message) {
+      successBox.style.display = "block";
+      successBox.textContent = "✅ " + message;
+      errorBox.style.display = "none";
+    }
+
+    cvInput.addEventListener("change", function () {
+      if (cvInput.files.length > 0) {
+        const file = cvInput.files[0];
+        cvFileName.textContent = file.name;
+
+        if (file.size > MAX_CV_SIZE) {
+          showError("Le CV dépasse 5 Mo. Veuillez choisir un fichier plus léger.");
+          cvInput.value = "";
+          cvFileName.textContent = "Aucun fichier sélectionné";
+        } else {
+          hideError();
+        }
+      }
+    });
+
+    photoInput.addEventListener("change", function () {
+      if (photoInput.files.length > 0) {
+        const file = photoInput.files[0];
+        photoFileName.textContent = file.name;
+
+        if (file.size > MAX_PHOTO_SIZE) {
+          showError("La photo dépasse 2 Mo. Veuillez choisir une image plus légère.");
+          photoInput.value = "";
+          photoFileName.textContent = "Aucun fichier sélectionné";
+        } else {
+          hideError();
+        }
+      }
+    });
+
+    form.addEventListener("submit", function (e) {
+      hideError();
+
+      if (!cvInput.files.length) {
+        e.preventDefault();
+        showError("Veuillez ajouter votre CV.");
+        return;
+      }
+
+      if (!photoInput.files.length) {
+        e.preventDefault();
+        showError("Veuillez ajouter votre photo d’identité.");
+        return;
+      }
+
+      const cvFile = cvInput.files[0];
+      const photoFile = photoInput.files[0];
+
+      if (cvFile.size > MAX_CV_SIZE) {
+        e.preventDefault();
+        showError("Le CV dépasse 5 Mo.");
+        return;
+      }
+
+      if (photoFile.size > MAX_PHOTO_SIZE) {
+        e.preventDefault();
+        showError("La photo dépasse 2 Mo.");
+        return;
+      }
+
+      submitBtn.disabled = true;
+      submitBtn.textContent = "Envoi en cours...";
+
+      showSuccess("Votre dossier est en cours d’envoi...");
+    });
+  </script>
+
 </body>
-          </html>
+                </html>
