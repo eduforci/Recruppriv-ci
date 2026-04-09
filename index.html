@@ -150,27 +150,25 @@
     }
 
     .btn-primary {
-      background: linear-gradient(135deg, #0b7a33, #12a84b);
-      color: #ffffff;
-      box-shadow: 0 8px 20px rgba(11, 122, 51, 0.25);
+      background: var(--white);
+      color: var(--green-main);
+      box-shadow: var(--shadow);
     }
 
     .btn-primary:hover {
       transform: translateY(-3px);
-      box-shadow: 0 12px 25px rgba(11, 122, 51, 0.35);
+      background: #effff5;
     }
 
     .btn-secondary {
-      background: linear-gradient(135deg, #ffffff, #f2fff5);
-      color: #0b7a33;
-      border: 2px solid #12a84b;
-      box-shadow: 0 8px 20px rgba(18, 168, 75, 0.15);
+      background: transparent;
+      color: var(--white);
+      border: 2px solid rgba(255,255,255,0.85);
     }
 
     .btn-secondary:hover {
       transform: translateY(-3px);
-      background: linear-gradient(135deg, #eaffef, #ffffff);
-      box-shadow: 0 12px 25px rgba(18, 168, 75, 0.25);
+      background: rgba(255,255,255,0.08);
     }
 
     .hero-stats {
@@ -331,61 +329,6 @@
       font-size: 0.95rem;
     }
 
-    .form-premium-wrap {
-      background: #f4fff6;
-    }
-
-    .premium-form-box {
-      max-width: 800px;
-      margin: auto;
-      background: #ffffff;
-      border-radius: 20px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-      padding: 35px;
-      border: 1px solid #edf7f0;
-    }
-
-    .premium-form-box h2 {
-      text-align: center;
-      color: #0b7a33;
-      font-size: 2rem;
-      margin-bottom: 10px;
-    }
-
-    .premium-form-box p {
-      text-align: center;
-      color: #555;
-      font-size: 1rem;
-      margin-bottom: 30px;
-    }
-
-    .premium-form {
-      display: grid;
-      gap: 18px;
-    }
-
-    .premium-form input,
-    .premium-form textarea {
-      width: 100%;
-      padding: 15px;
-      border: 1px solid #ccc;
-      border-radius: 12px;
-      font-size: 15px;
-      outline: none;
-      background: #fcfffd;
-    }
-
-    .premium-form input:focus,
-    .premium-form textarea:focus {
-      border-color: var(--green-light);
-      box-shadow: 0 0 0 3px rgba(25, 184, 100, 0.12);
-    }
-
-    .premium-form textarea {
-      resize: none;
-      min-height: 140px;
-    }
-
     .cta {
       margin: 0 8% 70px;
       background: linear-gradient(135deg, var(--green-dark), var(--green-light));
@@ -423,6 +366,7 @@
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
       gap: 18px;
       margin-top: 20px;
+      margin-bottom: 30px;
     }
 
     .contact-item {
@@ -436,6 +380,59 @@
       display: block;
       color: var(--green-main);
       margin-bottom: 8px;
+    }
+
+    .contact-form {
+      display: grid;
+      gap: 16px;
+      margin-top: 10px;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+    }
+
+    .contact-form input,
+    .contact-form select,
+    .contact-form textarea {
+      width: 100%;
+      padding: 14px 16px;
+      border-radius: 12px;
+      border: 1px solid #dbeee3;
+      outline: none;
+      font-size: 0.98rem;
+      background: #fcfffd;
+      transition: var(--transition);
+    }
+
+    .contact-form input:focus,
+    .contact-form select:focus,
+    .contact-form textarea:focus {
+      border-color: var(--green-light);
+      box-shadow: 0 0 0 3px rgba(25, 184, 100, 0.12);
+    }
+
+    .contact-form textarea {
+      min-height: 140px;
+      resize: vertical;
+    }
+
+    .form-helper {
+      font-size: 0.92rem;
+      color: var(--text-light);
+    }
+
+    .submit-btn {
+      background: linear-gradient(135deg, var(--green-main), var(--green-light));
+      color: var(--white);
+      box-shadow: 0 10px 24px rgba(15, 143, 80, 0.18);
+    }
+
+    .submit-btn:hover {
+      transform: translateY(-2px);
+      opacity: 0.96;
     }
 
     footer {
@@ -477,7 +474,6 @@
       .hero h1 { font-size: 2.3rem; }
       .section-title { font-size: 1.9rem; }
       .cta h2 { font-size: 1.8rem; }
-      .premium-form-box h2 { font-size: 1.8rem; }
     }
 
     @media (max-width: 768px) {
@@ -511,8 +507,7 @@
         padding: 45px 20px;
       }
 
-      .contact-box,
-      .premium-form-box {
+      .contact-box {
         padding: 24px;
       }
 
@@ -560,8 +555,8 @@
     </p>
 
     <div class="hero-buttons">
-      <a href="#demande-professeur" class="btn btn-primary">📘 Demande de professeur</a>
-      <a href="candidature.html" class="btn btn-secondary">📝 Poser ma candidature</a>
+      <a href="demande-professeur.html" class="btn btn-primary">Demande de professeur</a>
+      <a href="candidature.html" class="btn btn-secondary">Poser ma candidature</a>
     </div>
 
     <div class="hero-stats">
@@ -708,33 +703,6 @@
     </div>
   </section>
 
-  <!-- SECTION DEMANDE DE PROFESSEUR PREMIUM -->
-  <section id="demande-professeur" class="form-premium-wrap">
-    <div class="premium-form-box">
-      <h2>📘 Demande de professeur</h2>
-      <p>
-        Remplissez ce formulaire pour trouver rapidement un enseignant qualifié pour votre établissement.
-      </p>
-
-      <form action="https://formsubmit.co/contact.recruprive@gmail.com" method="POST" class="premium-form">
-        <input type="hidden" name="_captcha" value="false">
-        <input type="hidden" name="_subject" value="Nouvelle demande de professeur - RecruPPrivé.CI">
-
-        <input type="text" name="Nom du fondateur ou responsable" placeholder="Nom du fondateur ou responsable" required>
-        <input type="text" name="Nom de l'établissement" placeholder="Nom de l'établissement" required>
-        <input type="text" name="Localisation" placeholder="Ville / Commune / Quartier" required>
-        <input type="tel" name="Téléphone" placeholder="Numéro de téléphone" required>
-        <input type="email" name="Email" placeholder="Adresse e-mail" required>
-        <input type="text" name="Matière recherchée" placeholder="Matière recherchée (Ex : Maths, Anglais...)" required>
-        <input type="text" name="Niveau" placeholder="Niveau demandé (Primaire, Collège, Lycée...)" required>
-
-        <textarea name="Détails de la demande" rows="5" placeholder="Décrivez votre besoin (nombre de professeurs, horaires, urgence, etc.)" required></textarea>
-
-        <button type="submit" class="btn btn-primary">🚀 Envoyer la demande</button>
-      </form>
-    </div>
-  </section>
-
   <section class="cta">
     <h2>Prêt à lancer votre demande ou votre candidature ?</h2>
     <p>
@@ -742,7 +710,7 @@
       dans un cadre plus professionnel.
     </p>
     <div class="hero-buttons">
-      <a href="#demande-professeur" class="btn btn-primary">Faire une demande</a>
+      <a href="demande-professeur.html" class="btn btn-primary">Faire une demande</a>
       <a href="candidature.html" class="btn btn-secondary">Déposer ma candidature</a>
     </div>
   </section>
@@ -750,7 +718,7 @@
   <section id="contact">
     <h2 class="section-title">Contact</h2>
     <p class="section-subtitle">
-      Contactez RecruPPrivé.CI directement via nos informations professionnelles.
+      Contactez RecruPPrivé.CI directement via ce formulaire professionnel.
     </p>
 
     <div class="contact-box">
@@ -767,18 +735,19 @@
 
         <div class="contact-item">
           <strong>Email professionnel</strong>
-          contact.recruprive@gmail.com
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <footer>
-    <div class="footer-content">
+          contact.recruprive@gmail.com </div>
+     
+ <footer>
+         <div class="footer-content">
       <p>&copy; 2026 RecruPPrivé.CI - Tous droits réservés</p>
       <div class="footer-links">
         <a href="#accueil">Accueil</a>
         <a href="#services">Services</a>
         <a href="#fonctionnement">Fonctionnement</a>
-        <a href="#demande-professeur">Demande</a>
-        <a href="#contact">
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+  </html>
