@@ -160,6 +160,32 @@
       color: var(--text-light);
     }
 
+    .important-note {
+      background: #eafbf1;
+      border-left: 5px solid var(--green-main);
+      border-radius: 14px;
+      padding: 20px;
+      margin-top: 10px;
+      margin-bottom: 8px;
+      color: var(--text-dark);
+    }
+
+    .important-note h3 {
+      color: var(--green-main);
+      font-size: 1.05rem;
+      margin-bottom: 10px;
+      font-weight: 800;
+    }
+
+    .important-note p {
+      margin-bottom: 10px;
+      font-size: 0.96rem;
+    }
+
+    .important-note p:last-child {
+      margin-bottom: 0;
+    }
+
     .submit-btn {
       border: none;
       background: linear-gradient(135deg, var(--green-main), var(--green-light));
@@ -302,6 +328,25 @@
         <p class="helper">
           En validant ce formulaire, votre demande sera transmise à RecruPPrivé.CI via Formspree pour traitement.
         </p>
+
+        <div class="important-note">
+          <h3>Important – Conditions de mise en relation</h3>
+          <p>
+            Après l’envoi de votre demande, notre équipe étudie votre besoin et vous propose, selon disponibilité,
+            des CV ou profils de candidats adaptés au poste recherché.
+          </p>
+          <p>
+            Si l’un des profils proposés correspond à vos attentes, vous nous indiquez le candidat que vous souhaitez retenir.
+            Nous procédons ensuite à la mise en relation avec ce candidat.
+          </p>
+          <p>
+            <strong>Les frais de prestation pour cette mise en relation sont fixés à 10 000 FCFA</strong>,
+            à régler avant la transmission des coordonnées complètes du candidat.
+          </p>
+          <p>
+            <strong>NB :</strong> Aucun frais n’est demandé avant la proposition des premiers profils disponibles.
+          </p>
+        </div>
 
         <button type="submit" class="submit-btn">Envoyer la demande de professeur</button>
       </form>
